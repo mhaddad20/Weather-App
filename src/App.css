@@ -1,38 +1,230 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f5ff;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.search-form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 20px;
+}
+
+.search-form input {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 25px 0 0 25px;
+  width: 300px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-form input:focus {
+  border-color: #434d5a;
+}
+
+.search-form button {
+  padding: 12px 25px;
+  font-size: 16px;
+  background-color: #434d5a;
+  color: white;
+  border: none;
+  border-radius: 0 25px 25px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-form button:hover {
+  background-color: #45a049;
+}
+
+.current-weather {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  background-color: rgb(32, 44, 60);
+  border: 2px solid #434d5a;
+  border-radius: 10px;
+  overflow: hidden;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.weather-details {
+  flex: 0 0 20%;
+  padding: 50px;
+  background-color: rgba(240, 245, 255, 0.1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.weather-details h2 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  color: white;
+}
+
+.weather-details p {
+  margin: 5px 0;
+  color: #D3D3D3 ;
+}
+
+.current-temp {
+  font-size: 36px;
+  font-weight: bold;
+  color: #434d5a;
+}
+
+.weather-icon-container {
+  flex: 0 0 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.current-icon {
+  width: 150px;
+  height: 150px;
+}
+
+.today-forecast, .seven-day-forecast {
+  background-color: rgb(32, 44, 60);
+  border: 2px solid #434d5a;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  color: #D3D3D3 ;
+}
+
+.today-forecast h3, .seven-day-forecast h3 {
+  margin-top: 0;
+  color: white;
+}
+
+.hourly-forecast {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.hourly-item {
+  flex: 0 0 auto;
+  width: 100px;
+  text-align: center;
+  padding: 10px;
+  border-right: 1px solid #434d5a;
+}
+
+.hourly-item:last-child {
+  border-right: none;
+}
+
+.hourly-item img {
+  width: 50px;
+  height: 50px;
+}
+
+.view-more {
+  display: none;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #434d5a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.forecast-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.forecast-row {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #434d5a;
+}
+
+.forecast-row:last-child {
+  border-bottom: none;
+}
+
+.day-name {
+  width: 80px;
+  font-weight: bold;
+}
+
+.forecast-row img {
+  width: 40px;
+  height: 40px;
+  margin: 0 15px;
+}
+
+.condition {
+  flex-grow: 1;
+}
+
+.temp-range {
+  width: 80px;
+  text-align: right;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .current-weather {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .weather-details,
+  .weather-icon-container {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  .weather-details {
+    text-align: center;
+  }
+
+  .hourly-forecast {
+    flex-wrap: wrap;
+  }
+  
+  .hourly-item {
+    width: calc(33.33% - 20px);
+    border-right: none;
+    border-bottom: 1px solid #434d5a;
+  }
+  
+  .view-more {
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .search-form input {
+    width: 200px;
+  }
+  
+  .hourly-item {
+    width: calc(50% - 20px);
+  }
+  
+  .forecast-row {
+    flex-wrap: wrap;
+  }
+  
+  .day-name, .condition, .temp-range {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
   }
 }
